@@ -69,7 +69,7 @@ class MealPal(DriverWrapper):
         self.driver.execute_script("""
             $(".fade-box").css("display", "-webkit-box")
             $(".pickupTimes-list").removeClass("hidden")
-        """.format(MealPal.SELECTORS["time_li"]))
+        """)
         time.sleep(self.wait_time)
         time_li = self.get_elem("time_li")
         time_li.click()
@@ -87,9 +87,8 @@ if __name__=="__main__":
     search = os.getenv("search")
     print """Ordering for
         username: {}
-        password: {}
         search: {}
-    """.format(username, password, search)
+    """.format(username, search)
     actor = MealPal(driver, username, password)
     actor.login()
     actor.search(search)
